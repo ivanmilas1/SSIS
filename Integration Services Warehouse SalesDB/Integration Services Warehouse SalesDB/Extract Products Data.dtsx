@@ -1,0 +1,774 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/15/2020 4:23:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STUDENT-PC2"
+  DTS:CreatorName="STUDENT-PC2\Student2"
+  DTS:DTSID="{3267CCE3-441C-4C18-8EDE-C544CFCD9AA3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="1050"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{DE0978D4-3887-47E9-A872-43193D7297DF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F90A78A2-98CA-46AC-B139-7D97577A65DF}"
+      DTS:ObjectName="10.228.1.215.salesDWH2020_Tim3.sqluser2020_10">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.228.1.215;User ID=sqluser2020_10;Initial Catalog=salesDWH2020_Tim3;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABJBPu3CeSjP2Y53xsWyi1n3bbPS7Ofb6ycWsAY6zmQjgAAAAAOgAAAAAIAACAAAADYsGYhvR7Q7XgawnG1LPPhtDnmVlXpfd+qPemr4t8LLSAAAADcNcnXok4Kplou6W8WxwRwMsqXxTD2Om/A0NHmcw31akAAAADtIpjHXdXGd2ht8UJhbwUVcU79TEYLDXEpr23+gLePLhXNjErA7wfiBdDSCI67k9pnDiV7xqxeQZOWJueFlZ//</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F563DF50-49E2-4294-A1F6-0CC584A7EAA1}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Extract Products"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{94FF8790-2B7C-414B-AE2A-C1E78613C0DD}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Extract Products"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container\Extract Products\Products"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Products"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [ProductID]
+      ,[ProductName]
+      ,[Price]
+      ,[CategoryID]
+      ,[Class]
+      ,[ModifyDate]
+      ,[Ressistant]
+      ,[IsAllergic]
+      ,[VitalityDays]
+      ,[PurchasePrice]
+  FROM [salesDWH2020_Tim3].[staging].[Products]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Extract Products\Products.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                      connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ProductName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ProductName]"
+                          name="ProductName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Price]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Price]"
+                          name="Price"
+                          precision="28"
+                          scale="5"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[CategoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[CategoryID]"
+                          name="CategoryID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Class]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[Class]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Class]"
+                          name="Class"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ModifyDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[ModifyDate]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ModifyDate]"
+                          name="ModifyDate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Ressistant]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[Ressistant]"
+                          length="50"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Ressistant]"
+                          name="Ressistant"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[IsAllergic]"
+                          dataType="bool"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[IsAllergic]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[IsAllergic]"
+                          name="IsAllergic"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[VitalityDays]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[VitalityDays]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[VitalityDays]"
+                          name="VitalityDays"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[PurchasePrice]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[PurchasePrice]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[PurchasePrice]"
+                          name="PurchasePrice"
+                          precision="28"
+                          scale="5"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                          dataType="numeric"
+                          name="Price"
+                          precision="28"
+                          scale="5" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[CategoryID]"
+                          dataType="i4"
+                          name="CategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[Class]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Class" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[ModifyDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifyDate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[Ressistant]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Ressistant" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[IsAllergic]"
+                          dataType="bool"
+                          name="IsAllergic" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[VitalityDays]"
+                          dataType="i4"
+                          name="VitalityDays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].ExternalColumns[PurchasePrice]"
+                          dataType="numeric"
+                          name="PurchasePrice"
+                          precision="28"
+                          scale="5" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                          name="ProductName" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[Price]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[Price]"
+                          name="Price"
+                          precision="28"
+                          scale="5" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[CategoryID]"
+                          name="CategoryID" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[Class]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[Class]"
+                          name="Class" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ModifyDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ModifyDate]"
+                          name="ModifyDate" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[Ressistant]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[Ressistant]"
+                          name="Ressistant" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[IsAllergic]"
+                          dataType="bool"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[IsAllergic]"
+                          name="IsAllergic" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[VitalityDays]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[VitalityDays]"
+                          name="VitalityDays" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[PurchasePrice]"
+                          dataType="numeric"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[PurchasePrice]"
+                          name="PurchasePrice"
+                          precision="28"
+                          scale="5" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container\Extract Products\staging DB"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="staging DB"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [ProductID]
+      ,[ProductName]
+      ,[Price]
+      ,[CategoryID]
+      ,[Class]
+      ,[ModifyDate]
+      ,[Ressistant]
+      ,[IsAllergic]
+      ,[VitalityDays]
+      ,[PurchasePrice]
+  FROM [salesDWH2020_Tim3].[staging].[Products]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1250</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container\Extract Products\staging DB.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                      connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedDataType="i4"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductName"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[Price]"
+                          cachedDataType="numeric"
+                          cachedName="Price"
+                          cachedPrecision="28"
+                          cachedScale="5"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Price]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[CategoryID]"
+                          cachedDataType="i4"
+                          cachedName="CategoryID"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[CategoryID]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[Class]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Class"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[Class]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Class]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[ModifyDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifyDate"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[ModifyDate]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[ModifyDate]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[Ressistant]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Ressistant"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[Ressistant]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[Ressistant]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[IsAllergic]"
+                          cachedDataType="bool"
+                          cachedName="IsAllergic"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[IsAllergic]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[IsAllergic]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[VitalityDays]"
+                          cachedDataType="i4"
+                          cachedName="VitalityDays"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[VitalityDays]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[VitalityDays]" />
+                        <inputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].Columns[PurchasePrice]"
+                          cachedDataType="numeric"
+                          cachedName="PurchasePrice"
+                          cachedPrecision="28"
+                          cachedScale="5"
+                          externalMetadataColumnId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[PurchasePrice]"
+                          lineageId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output].Columns[PurchasePrice]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                          dataType="numeric"
+                          name="Price"
+                          precision="28"
+                          scale="5" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[CategoryID]"
+                          dataType="i4"
+                          name="CategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[Class]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Class" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[ModifyDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifyDate" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[Ressistant]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Ressistant" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[IsAllergic]"
+                          dataType="bool"
+                          name="IsAllergic" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[VitalityDays]"
+                          dataType="i4"
+                          name="VitalityDays" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input].ExternalColumns[PurchasePrice]"
+                          dataType="numeric"
+                          name="PurchasePrice"
+                          precision="28"
+                          scale="5" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container\Extract Products\staging DB.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Extract Products\staging DB.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container\Extract Products\staging DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container\Extract Products\staging DB.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container\Extract Products.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container\Extract Products\staging DB.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container\Extract Products\Products.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container\Truncate Products"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{605A979B-0391-4307-B05A-FAA2030593A0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate Products"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{F90A78A2-98CA-46AC-B139-7D97577A65DF}"
+              SQLTask:SqlStatementSource="truncate table [salesDWH2020_Tim3].[staging].[Products]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{24F1ABD9-22AB-43F4-807A-742B4C25B2C6}"
+          DTS:From="Package\Sequence Container\Truncate Products"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container\Extract Products" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Sequence Container\Truncate Products"
+          TopLeft="58,17" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Sequence Container\Extract Products"
+          TopLeft="73,118" />
+        <EdgeLayout
+          Id="Package\Sequence Container.PrecedenceConstraints[Constraint]"
+          TopLeft="140.5,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.5,59"
+              Start="0,0"
+              End="10.5,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="6.5,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.5,29.5"
+                    Point2="10.5,29.5"
+                    Point3="10.5,33.5" />
+                  <mssgle:LineSegment
+                    End="10.5,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="319,210"
+          Size="319,253"
+          Id="Package\Sequence Container"
+          TopLeft="172,248" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container\Extract Products">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Sequence Container\Extract Products\staging DB"
+          TopLeft="267,305" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Sequence Container\Extract Products\Products"
+          TopLeft="249,168" />
+        <EdgeLayout
+          Id="Package\Sequence Container\Extract Products.Paths[OLE DB Source Output]"
+          TopLeft="309,210">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,95"
+              Start="0,0"
+              End="23,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.5"
+                    Point2="0,47.5"
+                    Point3="4,47.5" />
+                  <mssgle:LineSegment
+                    End="19,47.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19,47.5"
+                    Point2="23,47.5"
+                    Point3="23,51.5" />
+                  <mssgle:LineSegment
+                    End="23,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Extract Products\staging DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container\Extract Products\Products">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
