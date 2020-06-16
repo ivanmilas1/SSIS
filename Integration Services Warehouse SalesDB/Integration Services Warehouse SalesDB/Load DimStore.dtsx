@@ -11,8 +11,8 @@
   DTS:LocaleID="1050"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{F875414E-406F-430D-935B-B5B18820932E}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{1B4EED6D-890F-4701-BAA3-C7D1ECAA360B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA5xOde+jwDH4oog1vApVWOKK7tTPIQyrSTiJIodIizIQAAAAAOgAAAAAIAACAAAACQDMe1IJs/nfZN10zE+faZLPmfbYI9dx295QwuF7VwLiAAAADeieYcXhucPu41RVXMtlQUxxRbQaAFsYSO48n7Q4+7UkAAAADtly6gJLHARuePw+JQzDFDcNIb0iNbJNQNrUNB+EOShTRhdGvcyNXeEf7iENyWCjOaaKPrGr8c5gmMOdnSG6aF</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACOzmQGBNGJUY8fapveCoDAOmessbQn/5AwC5kN3emNHgAAAAAOgAAAAAIAACAAAABs90C8ZK1uJaNrGSaBwvAQLj5b+wuP1Q3LnyBNTprN9CAAAABpRsM1mqrGb1aRuhktAJ4XIuqyN2+Bpohel2yHyGz9BkAAAABzm64WYPlhfjq86d1/rIIUWELtb18qDz906zeiRLplppC9SztcsSMLAPQrrijRdWpS5oFARqVH/xh/9pA6JGiN</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1398,7 +1398,7 @@ where [StoreSID] =?</property>
         <NodeLayout
           Size="176,42"
           Id="Package\load DimStores Data"
-          TopLeft="94,110" />
+          TopLeft="35,44" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1657,20 +1657,12 @@ where [StoreSID] =?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\load DimStores Data\Stores">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\load DimStores Data\Lkp dimCity">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1680,7 +1672,7 @@ where [StoreSID] =?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1693,7 +1685,7 @@ where [StoreSID] =?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1703,7 +1695,7 @@ where [StoreSID] =?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1712,6 +1704,14 @@ where [StoreSID] =?</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\load DimStores Data\Insert dimStores">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load DimStores Data\Stores">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
