@@ -1,0 +1,1722 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/16/2020 2:23:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="STUDENT-PC2"
+  DTS:CreatorName="STUDENT-PC2\Student2"
+  DTS:DTSID="{2D8CB26C-B700-4F6A-AA78-F208A438CD38}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="1050"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{F875414E-406F-430D-935B-B5B18820932E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B69AA20E-86D4-444C-ABC2-02C0E0CBEC38}"
+      DTS:ObjectName="10.228.1.215.salesDWH2020_Tim3.sqluser2020_10">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=10.228.1.215;User ID=sqluser2020_10;Initial Catalog=salesDWH2020_Tim3;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAA5xOde+jwDH4oog1vApVWOKK7tTPIQyrSTiJIodIizIQAAAAAOgAAAAAIAACAAAACQDMe1IJs/nfZN10zE+faZLPmfbYI9dx295QwuF7VwLiAAAADeieYcXhucPu41RVXMtlQUxxRbQaAFsYSO48n7Q4+7UkAAAADtly6gJLHARuePw+JQzDFDcNIb0iNbJNQNrUNB+EOShTRhdGvcyNXeEf7iENyWCjOaaKPrGr8c5gmMOdnSG6aF</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\load DimStores Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AA791245-30EC-4036-BC74-43E028FF6AA5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="load DimStores Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\load DimStores Data\Insert dimStores"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert dimStores"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [StoreSID]
+      ,[StoreID]
+      ,[StoreName]
+      ,[CitySID]
+      ,[OpeningDate]
+  FROM [salesDWH2020_Tim3].[dbo].[dimStore]</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load DimStores Data\Insert dimStores.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].Columns[StoreID]"
+                      cachedDataType="i4"
+                      cachedName="StoreID"
+                      externalMetadataColumnId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[StoreID]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreID]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].Columns[StoreName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      externalMetadataColumnId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].Columns[OpeningDate]"
+                      cachedDataType="dbDate"
+                      cachedName="OpeningDate"
+                      externalMetadataColumnId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[OpeningDate]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[OpeningDate]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].Columns[CitySID_DWH_City]"
+                      cachedDataType="i4"
+                      cachedName="CitySID_DWH_City"
+                      externalMetadataColumnId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[CitySID]"
+                      lineageId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[StoreSID]"
+                      dataType="i4"
+                      name="StoreSID" />
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[StoreID]"
+                      dataType="i4"
+                      name="StoreID" />
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[StoreName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StoreName" />
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[CitySID]"
+                      dataType="i4"
+                      name="CitySID" />
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input].ExternalColumns[OpeningDate]"
+                      dataType="dbDate"
+                      name="OpeningDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load DimStores Data\Insert dimStores.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Insert dimStores.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Insert dimStores.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Insert dimStores.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load DimStores Data\Is new row"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Is new row"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\load DimStores Data\Is new row.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load DimStores Data\Is new row.Inputs[Conditional Split Input].Columns[StoreSID_DWH]"
+                      cachedDataType="i4"
+                      cachedName="StoreSID_DWH"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreSID_DWH]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load DimStores Data\Is new row.Outputs[New row]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="New row"
+                  synchronousInputId="Package\load DimStores Data\Is new row.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreSID_DWH]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(StoreSID_DWH)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Is new row.Outputs[Old row]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Old row"
+                  synchronousInputId="Package\load DimStores Data\Is new row.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">![ISNULL](#{Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreSID_DWH]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(StoreSID_DWH)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Is new row.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\load DimStores Data\Is new row.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Is new row.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\load DimStores Data\Is new row.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Is new row.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Is new row.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Is new row.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Is new row.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load DimStores Data\Is updated"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Is updated"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input].Columns[StoreName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input].Columns[StoreName_DWH]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreName_DWH"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreName_DWH]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input].Columns[CitySID_DWH]"
+                      cachedDataType="i4"
+                      cachedName="CitySID_DWH"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[CitySID_DWH]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input].Columns[CitySID_DWH_City]"
+                      cachedDataType="i4"
+                      cachedName="CitySID_DWH_City"
+                      lineageId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load DimStores Data\Is updated.Outputs[Is updated]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Is updated"
+                  synchronousInputId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreName]} != #{Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreName_DWH]} || #{Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]} != [REPLACENULL](#{Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[CitySID_DWH]},"Default")</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">StoreName != StoreName_DWH || CitySID_DWH_City != REPLACENULL(CitySID_DWH,"Default")</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Is updated.Outputs[Update when no CitySID]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Update when no CitySID"
+                  synchronousInputId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[CitySID_DWH]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(CitySID_DWH)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Is updated.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Is updated.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Is updated.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Is updated.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Is updated.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Is updated.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load DimStores Data\Lkp dimCity"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lkp dimCity"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [CitySID]
+      ,[CityID]
+      ,[CityName]
+      ,[ZipCode]
+      ,[CountrySID]
+  FROM [salesDWH2020_Tim3].[dbo].[dimCity]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  [CitySID]
+      ,[CityID]
+      ,[CityName]
+      ,[ZipCode]
+      ,[CountrySID]
+  FROM [salesDWH2020_Tim3].[dbo].[dimCity]) [refTable]
+where [refTable].[CityID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CitySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ZipCode" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountrySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[CityID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load DimStores Data\Lkp dimCity.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load DimStores Data\Lkp dimCity.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load DimStores Data\Lkp dimCity.Inputs[Lookup Input].Columns[CityID]"
+                      cachedDataType="i4"
+                      cachedName="CityID"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[CityID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CityID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\load DimStores Data\Lkp dimCity.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]"
+                      name="CitySID_DWH_City"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CitySID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\load DimStores Data\Lkp dimCity.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\load DimStores Data\Lkp dimCity.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load DimStores Data\Lkp DimStores"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lkp DimStores"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [StoreSID]
+      ,[StoreID]
+      ,[StoreName]
+      ,[CitySID]
+      ,[OpeningDate]
+  FROM [salesDWH2020_Tim3].[dbo].[dimStore]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  [StoreSID]
+      ,[StoreID]
+      ,[StoreName]
+      ,[CitySID]
+      ,[OpeningDate]
+  FROM [salesDWH2020_Tim3].[dbo].[dimStore]) [refTable]
+where [refTable].[StoreID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="StoreSID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StoreID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StoreName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CitySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OpeningDate" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load DimStores Data\Lkp DimStores.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load DimStores Data\Lkp DimStores.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load DimStores Data\Lkp DimStores.Inputs[Lookup Input].Columns[StoreID]"
+                      cachedDataType="i4"
+                      cachedName="StoreID"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">StoreID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\load DimStores Data\Lkp DimStores.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreSID_DWH]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreSID_DWH]"
+                      name="StoreSID_DWH"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">StoreSID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreName_DWH]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreName_DWH]"
+                      name="StoreName_DWH"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">StoreName</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[CitySID_DWH]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[CitySID_DWH]"
+                      name="CitySID_DWH"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CitySID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[OpeningDate_DWH]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[OpeningDate_DWH]"
+                      name="OpeningDate_DWH"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">OpeningDate</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\load DimStores Data\Lkp DimStores.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\load DimStores Data\Lkp DimStores.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load DimStores Data\Stores"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stores"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [StoreID]
+      ,cast([StoreName] as nvarchar(50)) as StoreName
+      ,[CityID]
+      ,[OpeningDate]
+  FROM [salesDWH2020_Tim3].[staging].[Stores]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load DimStores Data\Stores.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].ExternalColumns[StoreID]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreID]"
+                      name="StoreID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].ExternalColumns[StoreName]"
+                      length="50"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreName]"
+                      name="StoreName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[OpeningDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].ExternalColumns[OpeningDate]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[OpeningDate]"
+                      name="OpeningDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[CityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].ExternalColumns[CityID]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[CityID]"
+                      name="CityID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].ExternalColumns[StoreID]"
+                      dataType="i4"
+                      name="StoreID" />
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].ExternalColumns[StoreName]"
+                      dataType="wstr"
+                      length="50"
+                      name="StoreName" />
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].ExternalColumns[OpeningDate]"
+                      dataType="dbDate"
+                      name="OpeningDate" />
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].ExternalColumns[CityID]"
+                      dataType="i4"
+                      name="CityID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[StoreID]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[StoreID]"
+                      name="StoreID" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[StoreName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[StoreName]"
+                      name="StoreName" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[CityID]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[CityID]"
+                      name="CityID" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[OpeningDate]"
+                      dataType="dbDate"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[OpeningDate]"
+                      name="OpeningDate" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load DimStores Data\Update dimStores"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update dimStores"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [salesDWH2020_Tim3].[dbo].[dimStore]
+SET 
+       [StoreID]=?
+      ,[StoreName]=?
+      ,[CitySID]=?
+      ,[OpeningDate]=?
+where [StoreSID] =?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load DimStores Data\Update dimStores.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].Columns[StoreID]"
+                      cachedDataType="i4"
+                      cachedName="StoreID"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreID]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].Columns[StoreName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].Columns[OpeningDate]"
+                      cachedDataType="dbDate"
+                      cachedName="OpeningDate"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[OpeningDate]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].Columns[CitySID_DWH_City]"
+                      cachedDataType="i4"
+                      cachedName="CitySID_DWH_City"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].Columns[StoreSID_DWH]"
+                      cachedDataType="i4"
+                      cachedName="StoreSID_DWH"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreSID_DWH]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="dbDate"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load DimStores Data\Update dimStores.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Update dimStores.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Update dimStores.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Update dimStores.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Update dimStores.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Update dimStores.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\load DimStores Data\Update dimStores 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update dimStores 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [salesDWH2020_Tim3].[dbo].[dimStore]
+SET 
+       [StoreID]=?
+      ,[StoreName]=?
+      ,[CitySID]=?
+      ,[OpeningDate]=?
+where [StoreSID] =?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\load DimStores Data\Update dimStores 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].Columns[StoreID]"
+                      cachedDataType="i4"
+                      cachedName="StoreID"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreID]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].Columns[StoreName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="StoreName"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[StoreName]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].Columns[OpeningDate]"
+                      cachedDataType="dbDate"
+                      cachedName="OpeningDate"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output].Columns[OpeningDate]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].Columns[CitySID_DWH_City]"
+                      cachedDataType="i4"
+                      cachedName="CitySID_DWH_City"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]" />
+                    <inputColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].Columns[StoreSID_DWH]"
+                      cachedDataType="i4"
+                      cachedName="StoreSID_DWH"
+                      externalMetadataColumnId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output].Columns[StoreSID_DWH]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="dbDate"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\load DimStores Data\Update dimStores 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\load DimStores Data\Update dimStores 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Update dimStores 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\load DimStores Data\Update dimStores 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\load DimStores Data\Update dimStores 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\load DimStores Data.Paths[Is updated]"
+              endId="Package\load DimStores Data\Update dimStores.Inputs[OLE DB Command Input]"
+              name="Is updated"
+              startId="Package\load DimStores Data\Is updated.Outputs[Is updated]" />
+            <path
+              refId="Package\load DimStores Data.Paths[Lookup Match Output]"
+              endId="Package\load DimStores Data\Lkp DimStores.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\load DimStores Data\Lkp dimCity.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\load DimStores Data.Paths[Lookup Match Output1]"
+              endId="Package\load DimStores Data\Is new row.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\load DimStores Data\Lkp DimStores.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\load DimStores Data.Paths[New row]"
+              endId="Package\load DimStores Data\Insert dimStores.Inputs[OLE DB Destination Input]"
+              name="New row"
+              startId="Package\load DimStores Data\Is new row.Outputs[New row]" />
+            <path
+              refId="Package\load DimStores Data.Paths[Old row]"
+              endId="Package\load DimStores Data\Is updated.Inputs[Conditional Split Input]"
+              name="Old row"
+              startId="Package\load DimStores Data\Is new row.Outputs[Old row]" />
+            <path
+              refId="Package\load DimStores Data.Paths[OLE DB Source Output]"
+              endId="Package\load DimStores Data\Lkp dimCity.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\load DimStores Data\Stores.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\load DimStores Data.Paths[Update when no CitySID]"
+              endId="Package\load DimStores Data\Update dimStores 1.Inputs[OLE DB Command Input]"
+              name="Update when no CitySID"
+              startId="Package\load DimStores Data\Is updated.Outputs[Update when no CitySID]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\load DimStores Data"
+          TopLeft="94,110" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\load DimStores Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="109,42"
+          Id="Package\load DimStores Data\Stores"
+          TopLeft="142,47" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\load DimStores Data\Lkp dimCity"
+          TopLeft="135,150" />
+        <EdgeLayout
+          Id="Package\load DimStores Data.Paths[OLE DB Source Output]"
+          TopLeft="199.25,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147,42"
+          Id="Package\load DimStores Data\Lkp DimStores"
+          TopLeft="133,275" />
+        <EdgeLayout
+          Id="Package\load DimStores Data.Paths[Lookup Match Output]"
+          TopLeft="204.25,192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83"
+              Start="0,0"
+              End="0,75.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,31.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="131,42"
+          Id="Package\load DimStores Data\Is new row"
+          TopLeft="137,373" />
+        <EdgeLayout
+          Id="Package\load DimStores Data.Paths[Lookup Match Output1]"
+          TopLeft="204.5,317">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-57.0600390625,16.25,114.120078125,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="129,42"
+          Id="Package\load DimStores Data\Is updated"
+          TopLeft="20,465" />
+        <EdgeLayout
+          Id="Package\load DimStores Data.Paths[Old row]"
+          TopLeft="182,415">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-97.5,50"
+              Start="0,0"
+              End="-97.5,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3619909502262" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3619909502262"
+                    Point2="0,20.3619909502262"
+                    Point3="-4,20.3619909502262" />
+                  <mssgle:LineSegment
+                    End="-93.5,20.3619909502262" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-93.5,20.3619909502262"
+                    Point2="-97.5,20.3619909502262"
+                    Point3="-97.5,24.3619909502262" />
+                  <mssgle:LineSegment
+                    End="-97.5,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-75.4176953125,25.3619909502262,53.335390625,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\load DimStores Data\Update dimStores"
+          TopLeft="12,632" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\load DimStores Data\Insert dimStores"
+          TopLeft="295,478" />
+        <EdgeLayout
+          Id="Package\load DimStores Data.Paths[New row]"
+          TopLeft="223,415">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="150.5,63"
+              Start="0,0"
+              End="150.5,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.6561085972851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.6561085972851"
+                    Point2="0,25.6561085972851"
+                    Point3="4,25.6561085972851" />
+                  <mssgle:LineSegment
+                    End="146.5,25.6561085972851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="146.5,25.6561085972851"
+                    Point2="150.5,25.6561085972851"
+                    Point3="150.5,29.6561085972851" />
+                  <mssgle:LineSegment
+                    End="150.5,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="55.22595703125,30.6561085972851,40.0480859375,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,42"
+          Id="Package\load DimStores Data\Update dimStores 1"
+          TopLeft="241,628" />
+        <EdgeLayout
+          Id="Package\load DimStores Data.Paths[Update when no CitySID]"
+          TopLeft="104.666666666667,507">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="222.333333333333,121"
+              Start="0,0"
+              End="222.333333333333,113.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.2894333843798" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.2894333843798"
+                    Point2="0,49.2894333843798"
+                    Point3="4,49.2894333843798" />
+                  <mssgle:LineSegment
+                    End="218.333333333333,49.2894333843798" />
+                  <mssgle:CubicBezierSegment
+                    Point1="218.333333333333,49.2894333843798"
+                    Point2="222.333333333333,49.2894333843798"
+                    Point3="222.333333333333,53.2894333843798" />
+                  <mssgle:LineSegment
+                    End="222.333333333333,113.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="56.4415104166667,54.2894333843798,109.4503125,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\load DimStores Data.Paths[Is updated]"
+          TopLeft="64.3333333333333,507">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="29.1666666666667,125"
+              Start="0,0"
+              End="29.1666666666667,117.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.9188361408882" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46.9188361408882"
+                    Point2="0,50.9188361408882"
+                    Point3="4,50.9188361408882" />
+                  <mssgle:LineSegment
+                    End="25.1666666666667,50.9188361408882" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.1666666666667,50.9188361408882"
+                    Point2="29.1666666666667,50.9188361408882"
+                    Point3="29.1666666666667,54.9188361408882" />
+                  <mssgle:LineSegment
+                    End="29.1666666666667,117.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.52625651041667,55.9188361408882,48.2191796875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\load DimStores Data\Stores">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load DimStores Data\Lkp dimCity">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load DimStores Data\Lkp DimStores">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\load DimStores Data\Insert dimStores">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

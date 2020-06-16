@@ -11,8 +11,8 @@
   DTS:LocaleID="1050"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{21A02F0B-7C72-45BC-AD2E-C42ADADAA2E0}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{5B8EA89C-9014-4A58-A80A-8DBDB67B793C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABsKS3kUrm0iz4WtzFaryDCU8RlGmVKO9mh73ctGU/djQAAAAAOgAAAAAIAACAAAADLP/FU47SyCtIEZTG31JKfPpwLJIBCcl1qoxQXEG4K6yAAAADhP2OMpITBu1E+2YG7s8MwHTsGf4QehpYZocRDaCYP6EAAAAA/t1rLMS2xsvW0CCpeyDvbxnUSimwoUTTpOsExZY8LUfFP5rDbuuITeeDk+Kg/oijO5VTpjZqy3z0ChFDfK1QD</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB4IsuuEk09E7OU0nYPpnbW8A5A/67exvVhGiCXxfp7bgAAAAAOgAAAAAIAACAAAAASld7V/fCwns8v6kxpO6AcnCbfbY6sN0uNOiCavWUsPCAAAABeduh72jZEpJcV5WYcBfKCo7t0ziTFnjTtoS2fTxLAREAAAAAbnDkuYW27HDMREZmFQnxFxlkZnbqSasRoosL0nkw9JxZUN3F5Bjq9UTKVbEizF5xd7nfzHQrjgdpjDU0EQtMG</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -1244,17 +1244,13 @@ where [CitySID] =?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="155,42"
-          Id="Package\dimCity Data Flow\Conditional Split"
-          TopLeft="75,501" />
-        <NodeLayout
           Size="132,42"
           Id="Package\dimCity Data Flow\Insert rows"
           TopLeft="390,501" />
         <NodeLayout
-          Size="138,42"
-          Id="Package\dimCity Data Flow\Update rows"
-          TopLeft="5,589" />
+          Size="155,42"
+          Id="Package\dimCity Data Flow\Conditional Split"
+          TopLeft="75,501" />
         <NodeLayout
           Size="131,42"
           Id="Package\dimCity Data Flow\Is new row"
@@ -1264,37 +1260,17 @@ where [CitySID] =?</property>
           Id="Package\dimCity Data Flow\Lkp dimCity"
           TopLeft="218,302" />
         <NodeLayout
+          Size="153,42"
+          Id="Package\dimCity Data Flow\Lkp dimCountry"
+          TopLeft="204,173" />
+        <NodeLayout
           Size="104,42"
           Id="Package\dimCity Data Flow\Cities"
           TopLeft="227,53" />
         <NodeLayout
-          Size="153,42"
-          Id="Package\dimCity Data Flow\Lkp dimCountry"
-          TopLeft="204,173" />
-        <EdgeLayout
-          Id="Package\dimCity Data Flow.Paths[Lookup Match Output]"
-          TopLeft="282.75,215">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,87"
-              Start="0,0"
-              End="0,79.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,79.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,33.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="138,42"
+          Id="Package\dimCity Data Flow\Update rows"
+          TopLeft="5,589" />
         <EdgeLayout
           Id="Package\dimCity Data Flow.Paths[Update]"
           TopLeft="152.5,543">
@@ -1419,20 +1395,6 @@ where [CitySID] =?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <AnnotationLayout
-          Text="source table staging.Cities"
-          ParentId="Package\dimCity Data Flow"
-          FontInfo="{assembly:Null}"
-          Size="167,40"
-          Id="ffe4ffd6-6508-45a1-897c-8a3149573b89"
-          TopLeft="392,51" />
-        <AnnotationLayout
-          Text="If new row by SID then insert else update if changed"
-          ParentId="Package\dimCity Data Flow"
-          FontInfo="{assembly:Null}"
-          Size="305,40"
-          Id="8f9eaf83-de6f-412d-9df5-72a75378dd28"
-          TopLeft="386,435" />
         <EdgeLayout
           Id="Package\dimCity Data Flow.Paths[Lookup Match Output1]"
           TopLeft="286.75,344">
@@ -1457,6 +1419,44 @@ where [CitySID] =?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dimCity Data Flow.Paths[Lookup Match Output]"
+          TopLeft="282.75,215">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,33.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="source table staging.Cities"
+          ParentId="Package\dimCity Data Flow"
+          FontInfo="{assembly:Null}"
+          Size="167,40"
+          Id="ffe4ffd6-6508-45a1-897c-8a3149573b89"
+          TopLeft="392,51" />
+        <AnnotationLayout
+          Text="If new row by SID then insert else update if changed"
+          ParentId="Package\dimCity Data Flow"
+          FontInfo="{assembly:Null}"
+          Size="305,40"
+          Id="8f9eaf83-de6f-412d-9df5-72a75378dd28"
+          TopLeft="386,435" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -1492,14 +1492,6 @@ where [CitySID] =?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dimCity Data Flow\Cities">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\dimCity Data Flow\Lkp dimCountry">
     <Properties>
       <Property>
@@ -1517,6 +1509,14 @@ where [CitySID] =?</property>
         <Value
           type="q4:int">0</Value>
       </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimCity Data Flow\Cities">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
