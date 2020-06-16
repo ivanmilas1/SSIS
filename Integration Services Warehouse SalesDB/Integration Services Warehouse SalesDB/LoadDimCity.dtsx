@@ -11,8 +11,8 @@
   DTS:LocaleID="1050"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{93526439-4188-4F43-8E0E-863C8BF311FF}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{21A02F0B-7C72-45BC-AD2E-C42ADADAA2E0}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACg6lSeye9lDJTvfMnQryLIM4bU0m1uClNsxMPclJlM4gAAAAAOgAAAAAIAACAAAADIhRihr0BxFUQQ/x8GzJkBUIaqbH6APF0S1nr0Wh2h1yAAAAAY20gepvvwEXtkA+dXbvpdYaRlSK9lVpVHQcBFnkX/OkAAAACpBB/CX4ee8O1tvkE6FW3aDpOgqoOw0W6O2BnAbF6Id9r4f9NFRcEV6OL7FQj9fU3wpBsZfhG+/Z/cik64IiLI</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABsKS3kUrm0iz4WtzFaryDCU8RlGmVKO9mh73ctGU/djQAAAAAOgAAAAAIAACAAAADLP/FU47SyCtIEZTG31JKfPpwLJIBCcl1qoxQXEG4K6yAAAADhP2OMpITBu1E+2YG7s8MwHTsGf4QehpYZocRDaCYP6EAAAAA/t1rLMS2xsvW0CCpeyDvbxnUSimwoUTTpOsExZY8LUfFP5rDbuuITeeDk+Kg/oijO5VTpjZqy3z0ChFDfK1QD</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -48,6 +48,304 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\dimCity Data Flow\Cities"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Cities"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct [CityID]
+      ,CAST([CityName] as NVARCHAR(50)) as CityName
+       ,CAST([Zipcode] as NVARCHAR(50)) as Zipcode
+      ,[CountryID]
+from [salesDWH2020_Tim3].[staging].[Cities]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1250</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dimCity Data Flow\Cities.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].ExternalColumns[CityID]"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityID]"
+                      name="CityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      length="50"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityName]"
+                      name="CityName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[Zipcode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].ExternalColumns[Zipcode]"
+                      length="50"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[Zipcode]"
+                      name="Zipcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CountryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].ExternalColumns[CountryID]"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CountryID]"
+                      name="CountryID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].ExternalColumns[CityID]"
+                      dataType="i4"
+                      name="CityID" />
+                    <externalMetadataColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
+                      dataType="wstr"
+                      length="50"
+                      name="CityName" />
+                    <externalMetadataColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].ExternalColumns[Zipcode]"
+                      dataType="wstr"
+                      length="50"
+                      name="Zipcode" />
+                    <externalMetadataColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].ExternalColumns[CountryID]"
+                      dataType="i4"
+                      name="CountryID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[CityID]"
+                      dataType="i4"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[CityID]"
+                      name="CityID" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[CityName]"
+                      name="CityName" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[Zipcode]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[Zipcode]"
+                      name="Zipcode" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[CountryID]"
+                      dataType="i4"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[CountryID]"
+                      name="CountryID" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dimCity Data Flow\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input].Columns[CityName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CityName"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityName]" />
+                    <inputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input].Columns[Zipcode]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Zipcode"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[Zipcode]" />
+                    <inputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input].Columns[CityName_DWH]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CityName_DWH"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityName_DWH]" />
+                    <inputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input].Columns[ZipCode_DWH]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ZipCode_DWH"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCode_DWH]" />
+                    <inputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input].Columns[CityID]"
+                      cachedDataType="i4"
+                      cachedName="CityID"
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityID]" />
+                    <inputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input].Columns[CityID_DWH]"
+                      cachedDataType="i4"
+                      cachedName="CityID_DWH"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityID_DWH]" />
+                    <inputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input].Columns[CountrySID_DWH_Country]"
+                      cachedDataType="i4"
+                      cachedName="CountrySID_DWH_Country"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID_DWH_Country]" />
+                    <inputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input].Columns[CountrySID_DWH]"
+                      cachedDataType="i4"
+                      cachedName="CountrySID_DWH"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CountrySID_DWH]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dimCity Data Flow\Conditional Split.Outputs[Update]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Update"
+                  synchronousInputId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CountrySID_DWH]} != #{Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID_DWH_Country]} || (#{Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[Zipcode]} != #{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCode_DWH]} || #{Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityID]} != #{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityID_DWH]} || #{Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityName]} != #{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityName_DWH]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">CountrySID_DWH != CountrySID_DWH_Country || (Zipcode != ZipCode_DWH || CityID != CityID_DWH || CityName != CityName_DWH)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dimCity Data Flow\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dimCity Data Flow\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dimCity Data Flow\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dimCity Data Flow\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\dimCity Data Flow\Insert rows"
               componentClassID="Microsoft.OLEDBDestination"
@@ -77,7 +375,7 @@
       ,[CityID]
       ,[CityName]
       ,[ZipCode]
-      ,[CountryID]
+      ,[CountrySID]
   FROM [salesDWH2020_Tim3].[dbo].[dimCity]</property>
                 <property
                   dataType="System.Int32"
@@ -130,29 +428,27 @@
                       cachedDataType="i4"
                       cachedName="CityID"
                       externalMetadataColumnId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[CityID]"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]" />
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityID]" />
                     <inputColumn
                       refId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[CityName]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="CityName"
                       externalMetadataColumnId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]" />
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityName]" />
                     <inputColumn
                       refId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[Zipcode]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Zipcode"
                       externalMetadataColumnId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zipcode]" />
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[Zipcode]" />
                     <inputColumn
-                      refId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[CountryID]"
+                      refId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[CountrySID_DWH_Country]"
                       cachedDataType="i4"
-                      cachedName="CountryID"
-                      externalMetadataColumnId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[CountryID]"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryID]" />
+                      cachedName="CountrySID_DWH_Country"
+                      externalMetadataColumnId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[CountrySID]"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID_DWH_Country]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -166,20 +462,18 @@
                       name="CityID" />
                     <externalMetadataColumn
                       refId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[CityName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="CityName" />
                     <externalMetadataColumn
                       refId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[ZipCode]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="ZipCode" />
                     <externalMetadataColumn
-                      refId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[CountryID]"
+                      refId="Package\dimCity Data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[CountrySID]"
                       dataType="i4"
-                      name="CountryID" />
+                      name="CountrySID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -222,48 +516,10 @@
                   name="Conditional Split Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dimCity Data Flow\Is new row.Inputs[Conditional Split Input].Columns[CitySID]"
+                      refId="Package\dimCity Data Flow\Is new row.Inputs[Conditional Split Input].Columns[CitySID_DWH]"
                       cachedDataType="i4"
-                      cachedName="CitySID"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID]" />
-                    <inputColumn
-                      refId="Package\dimCity Data Flow\Is new row.Inputs[Conditional Split Input].Columns[CityName]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="CityName"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]" />
-                    <inputColumn
-                      refId="Package\dimCity Data Flow\Is new row.Inputs[Conditional Split Input].Columns[CountryID]"
-                      cachedDataType="i4"
-                      cachedName="CountryID"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryID]" />
-                    <inputColumn
-                      refId="Package\dimCity Data Flow\Is new row.Inputs[Conditional Split Input].Columns[CityNameLkp]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="CityNameLkp"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityNameLkp]" />
-                    <inputColumn
-                      refId="Package\dimCity Data Flow\Is new row.Inputs[Conditional Split Input].Columns[CountryIDLkp]"
-                      cachedDataType="i4"
-                      cachedName="CountryIDLkp"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CountryIDLkp]" />
-                    <inputColumn
-                      refId="Package\dimCity Data Flow\Is new row.Inputs[Conditional Split Input].Columns[Zipcode]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Zipcode"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zipcode]" />
-                    <inputColumn
-                      refId="Package\dimCity Data Flow\Is new row.Inputs[Conditional Split Input].Columns[ZipCodeLkp]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="ZipCodeLkp"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCodeLkp]" />
+                      cachedName="CitySID_DWH"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -283,13 +539,13 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">[ISNULL](#{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID]})</property>
+                      name="Expression">[ISNULL](#{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">ISNULL(CitySID)</property>
+                      name="FriendlyExpression">ISNULL(CitySID_DWH)</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -311,13 +567,13 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">![ISNULL](#{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID]}) &amp;&amp; (#{Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zipcode]} != #{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCodeLkp]} || #{Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryID]} != #{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CountryIDLkp]} || #{Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]} != #{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityNameLkp]})</property>
+                      name="Expression">![ISNULL](#{Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">!ISNULL(CitySID) &amp;&amp; (Zipcode != ZipCodeLkp || [OLE DB Source].CountryID != [Lkp dimCity].CountryIDLkp || [OLE DB Source].CityName != [Lkp dimCity].CityNameLkp)</property>
+                      name="FriendlyExpression">!ISNULL(CitySID_DWH)</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -377,22 +633,22 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CitySID]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [CitySID]
       ,[CityID]
       ,[CityName]
       ,[ZipCode]
-      ,[CountryID]
+      ,[CountrySID]
   FROM [salesDWH2020_Tim3].[dbo].[dimCity]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT [CitySID]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  [CitySID]
       ,[CityID]
       ,[CityName]
       ,[ZipCode]
-      ,[CountryID]
+      ,[CountrySID]
   FROM [salesDWH2020_Tim3].[dbo].[dimCity]) [refTable]
 where [refTable].[CityID] = ?</property>
                 <property
@@ -425,12 +681,12 @@ where [refTable].[CityID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CitySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ZipCode" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CountryID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CitySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ZipCode" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountrySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]};</property>
+                  name="ParameterMap">#{Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -457,7 +713,7 @@ where [refTable].[CityID] = ?</property>
                       refId="Package\dimCity Data Flow\Lkp dimCity.Inputs[Lookup Input].Columns[CityID]"
                       cachedDataType="i4"
                       cachedName="CityID"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]">
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityID]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -483,11 +739,11 @@ where [refTable].[CityID] = ?</property>
                   synchronousInputId="Package\dimCity Data Flow\Lkp dimCity.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID]"
+                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID]"
-                      name="CitySID"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH]"
+                      name="CitySID_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -497,27 +753,12 @@ where [refTable].[CityID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityIDLkp]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityIDLkp]"
-                      name="CityIDLkp"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.String"
-                          description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">CityID</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityNameLkp]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityName_DWH]"
+                      dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="50"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityNameLkp]"
-                      name="CityNameLkp"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityName_DWH]"
+                      name="CityName_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -527,13 +768,12 @@ where [refTable].[CityID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCodeLkp]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCode_DWH]"
+                      dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="50"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCodeLkp]"
-                      name="ZipCodeLkp"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCode_DWH]"
+                      name="ZipCode_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -543,17 +783,31 @@ where [refTable].[CityID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CountryIDLkp]"
+                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityID_DWH]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CountryIDLkp]"
-                      name="CountryIDLkp"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityID_DWH]"
+                      name="CityID_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">CountryID</property>
+                          name="CopyFromReferenceColumn">CityID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CountrySID_DWH]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CountrySID_DWH]"
+                      name="CountrySID_DWH"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">CountrySID</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -651,12 +905,12 @@ where [refTable].[CountryID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CountrySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CountryCode" dataType="DT_STR" length="2" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CountrySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountryCode" dataType="DT_WSTR" length="2" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryID]};</property>
+                  name="ParameterMap">#{Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CountryID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -683,7 +937,7 @@ where [refTable].[CountryID] = ?</property>
                       refId="Package\dimCity Data Flow\Lkp dimCountry.Inputs[Lookup Input].Columns[CountryID]"
                       cachedDataType="i4"
                       cachedName="CountryID"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryID]">
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CountryID]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -709,11 +963,11 @@ where [refTable].[CountryID] = ?</property>
                   synchronousInputId="Package\dimCity Data Flow\Lkp dimCountry.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID]"
+                      refId="Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID_DWH_Country]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID]"
-                      name="CountrySID"
+                      lineageId="Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID_DWH_Country]"
+                      name="CountrySID_DWH_Country"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -758,182 +1012,6 @@ where [refTable].[CountryID] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\dimCity Data Flow\OLE DB Source"
-              componentClassID="Microsoft.OLEDBSource"
-              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-              description="OLE DB Source"
-              name="OLE DB Source"
-              usesDispositions="true"
-              version="7">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset"></property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select distinct [CityID]
-      ,[CityName]
-      ,[Zipcode]
-      ,[CountryID]
-from [salesDWH2020_Tim3].[staging].[Cities]</property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1250</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">2</property>
-                <property
-                  dataType="System.String"
-                  description="The mappings between the parameters in the SQL command and variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\dimCity Data Flow\OLE DB Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
-                  connectionManagerRefId="Package.ConnectionManagers[10.228.1.215.salesDWH2020_Tim3.sqluser2020_10]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output]"
-                  name="OLE DB Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityID]"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]"
-                      name="CityID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
-                      length="50"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityName]"
-                      name="CityName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zipcode]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zipcode]"
-                      length="50"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Zipcode]"
-                      name="Zipcode"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryID]"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CountryID]"
-                      name="CountryID"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityID]"
-                      dataType="i4"
-                      name="CityID" />
-                    <externalMetadataColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CityName]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="CityName" />
-                    <externalMetadataColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Zipcode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="Zipcode" />
-                    <externalMetadataColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CountryID]"
-                      dataType="i4"
-                      name="CountryID" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                  isErrorOut="true"
-                  name="OLE DB Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityID]"
-                      dataType="i4"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityID]"
-                      name="CityID" />
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CityName]"
-                      name="CityName" />
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zipcode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Zipcode]"
-                      name="Zipcode" />
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryID]"
-                      dataType="i4"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CountryID]"
-                      name="CountryID" />
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\dimCity Data Flow\Update rows"
               componentClassID="Microsoft.OLEDBCommand"
               contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
@@ -954,7 +1032,7 @@ from [salesDWH2020_Tim3].[staging].[Cities]</property>
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">update dimCity set [CityID] = ?
       ,[CityName] =?
       ,[ZipCode]=?
-      ,[CountryID]=?
+      ,[CountrySID]=?
 where [CitySID] =?</property>
                 <property
                   dataType="System.Int32"
@@ -978,39 +1056,37 @@ where [CitySID] =?</property>
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CitySID]"
+                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CitySID_DWH]"
                       cachedDataType="i4"
-                      cachedName="CitySID"
+                      cachedName="CitySID_DWH"
                       externalMetadataColumnId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID]" />
+                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH]" />
                     <inputColumn
-                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CityIDLkp]"
+                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CityID]"
                       cachedDataType="i4"
-                      cachedName="CityIDLkp"
+                      cachedName="CityID"
                       externalMetadataColumnId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityIDLkp]" />
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityID]" />
                     <inputColumn
-                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CityNameLkp]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CityName]"
+                      cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="CityNameLkp"
+                      cachedName="CityName"
                       externalMetadataColumnId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityNameLkp]" />
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[CityName]" />
                     <inputColumn
-                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[ZipCodeLkp]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[Zipcode]"
+                      cachedDataType="wstr"
                       cachedLength="50"
-                      cachedName="ZipCodeLkp"
+                      cachedName="Zipcode"
                       externalMetadataColumnId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[ZipCodeLkp]" />
+                      lineageId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output].Columns[Zipcode]" />
                     <inputColumn
-                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CountrySID]"
+                      refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CountrySID_DWH_Country]"
                       cachedDataType="i4"
-                      cachedName="CountrySID"
+                      cachedName="CountrySID_DWH_Country"
                       externalMetadataColumnId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID]" />
+                      lineageId="Package\dimCity Data Flow\Lkp dimCountry.Outputs[Lookup Match Output].Columns[CountrySID_DWH_Country]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1027,8 +1103,7 @@ where [CitySID] =?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Param_1">
                       <properties>
@@ -1040,8 +1115,7 @@ where [CitySID] =?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Param_2">
                       <properties>
@@ -1127,14 +1201,19 @@ where [CitySID] =?</property>
               startId="Package\dimCity Data Flow\Is new row.Outputs[New row]" />
             <path
               refId="Package\dimCity Data Flow.Paths[Old row]"
-              endId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input]"
+              endId="Package\dimCity Data Flow\Conditional Split.Inputs[Conditional Split Input]"
               name="Old row"
               startId="Package\dimCity Data Flow\Is new row.Outputs[Old row]" />
             <path
               refId="Package\dimCity Data Flow.Paths[OLE DB Source Output]"
               endId="Package\dimCity Data Flow\Lkp dimCountry.Inputs[Lookup Input]"
               name="OLE DB Source Output"
-              startId="Package\dimCity Data Flow\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\dimCity Data Flow\Cities.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\dimCity Data Flow.Paths[Update]"
+              endId="Package\dimCity Data Flow\Update rows.Inputs[OLE DB Command Input]"
+              name="Update"
+              startId="Package\dimCity Data Flow\Conditional Split.Outputs[Update]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1165,147 +1244,33 @@ where [CitySID] =?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="138,42"
-          Id="Package\dimCity Data Flow\Update rows"
-          TopLeft="418,554" />
-        <NodeLayout
-          Size="150,42"
-          Id="Package\dimCity Data Flow\OLE DB Source"
-          TopLeft="208,50" />
+          Size="155,42"
+          Id="Package\dimCity Data Flow\Conditional Split"
+          TopLeft="75,501" />
         <NodeLayout
           Size="132,42"
           Id="Package\dimCity Data Flow\Insert rows"
-          TopLeft="55,552" />
+          TopLeft="390,501" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\dimCity Data Flow\Update rows"
+          TopLeft="5,589" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\dimCity Data Flow\Is new row"
+          TopLeft="223,439" />
         <NodeLayout
           Size="134,42"
           Id="Package\dimCity Data Flow\Lkp dimCity"
           TopLeft="218,302" />
         <NodeLayout
+          Size="104,42"
+          Id="Package\dimCity Data Flow\Cities"
+          TopLeft="227,53" />
+        <NodeLayout
           Size="153,42"
           Id="Package\dimCity Data Flow\Lkp dimCountry"
           TopLeft="204,173" />
-        <NodeLayout
-          Size="131,42"
-          Id="Package\dimCity Data Flow\Is new row"
-          TopLeft="223,439" />
-        <EdgeLayout
-          Id="Package\dimCity Data Flow.Paths[OLE DB Source Output]"
-          TopLeft="281.75,92">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,81"
-              Start="0,0"
-              End="0,73.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,73.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dimCity Data Flow.Paths[Old row]"
-          TopLeft="309,481">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="178,73"
-              Start="0,0"
-              End="178,65.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.7285067873303" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.7285067873303"
-                    Point2="0,29.7285067873303"
-                    Point3="4,29.7285067873303" />
-                  <mssgle:LineSegment
-                    End="174,29.7285067873303" />
-                  <mssgle:CubicBezierSegment
-                    Point1="174,29.7285067873303"
-                    Point2="178,29.7285067873303"
-                    Point3="178,33.7285067873303" />
-                  <mssgle:LineSegment
-                    End="178,65.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="70.9934375,34.7285067873303,36.013125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dimCity Data Flow.Paths[New row]"
-          TopLeft="268,481">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-147,71"
-              Start="0,0"
-              End="-147,63.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.9140271493213" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.9140271493213"
-                    Point2="0,28.9140271493213"
-                    Point3="-4,28.9140271493213" />
-                  <mssgle:LineSegment
-                    End="-143,28.9140271493213" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-143,28.9140271493213"
-                    Point2="-147,28.9140271493213"
-                    Point3="-147,32.9140271493213" />
-                  <mssgle:LineSegment
-                    End="-147,63.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-93.52404296875,33.9140271493213,40.0480859375,9.421875"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dimCity Data Flow.Paths[Lookup Match Output1]"
-          TopLeft="286.75,344">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,95"
-              Start="0,0"
-              End="0,87.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,87.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,37.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\dimCity Data Flow.Paths[Lookup Match Output]"
           TopLeft="282.75,215">
@@ -1330,6 +1295,130 @@ where [CitySID] =?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dimCity Data Flow.Paths[Update]"
+          TopLeft="152.5,543">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-78.5,46"
+              Start="0,0"
+              End="-78.5,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="-4,23" />
+                  <mssgle:LineSegment
+                    End="-74.5,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-74.5,23"
+                    Point2="-78.5,23"
+                    Point3="-78.5,27" />
+                  <mssgle:LineSegment
+                    End="-78.5,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.53029296875,28,32.5605859375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dimCity Data Flow.Paths[OLE DB Source Output]"
+          TopLeft="279.75,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78"
+              Start="0,0"
+              End="0,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dimCity Data Flow.Paths[Old row]"
+          TopLeft="223,460">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-70.5,41"
+              Start="0,0"
+              End="-70.5,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-66.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-66.5,0"
+                    Point2="-70.5,0"
+                    Point3="-70.5,4" />
+                  <mssgle:LineSegment
+                    End="-70.5,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-88.5065625,-15.7490234375,36.013125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dimCity Data Flow.Paths[New row]"
+          TopLeft="354,460">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="36,62"
+              Start="0,0"
+              End="28.5,62">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="14,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14,0"
+                    Point2="18,0"
+                    Point3="18,4" />
+                  <mssgle:LineSegment
+                    End="18,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18,58"
+                    Point2="18,62"
+                    Point3="22,62" />
+                  <mssgle:LineSegment
+                    End="28.5,62" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-2.02404296875,-15.421875,40.0480859375,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <AnnotationLayout
           Text="source table staging.Cities"
           ParentId="Package\dimCity Data Flow"
@@ -1344,8 +1433,94 @@ where [CitySID] =?</property>
           Size="305,40"
           Id="8f9eaf83-de6f-412d-9df5-72a75378dd28"
           TopLeft="386,435" />
+        <EdgeLayout
+          Id="Package\dimCity Data Flow.Paths[Lookup Match Output1]"
+          TopLeft="286.75,344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,95"
+              Start="0,0"
+              End="0,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-57.0600390625,35.75,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimCity Data Flow\Insert rows">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimCity Data Flow\Lkp dimCity">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimCity Data Flow\Cities">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dimCity Data Flow\Lkp dimCountry">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

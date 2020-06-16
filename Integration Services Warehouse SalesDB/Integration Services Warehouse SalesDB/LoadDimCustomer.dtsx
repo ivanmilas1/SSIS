@@ -11,8 +11,8 @@
   DTS:LocaleID="1050"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{389C335F-9A0A-468A-A669-15B2B9D012EF}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{BE5C54C8-7326-468C-AB1A-C7563A957C23}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -27,7 +27,7 @@
           <DTS:Password
             DTS:Name="Password"
             Sensitive="1"
-            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAACkeTMatGiAkkgrI9v1VsKuSLBkoj9ZD3fApohNN1WXwAAAAAOgAAAAAIAACAAAAAudK/bzc+tvJ3aVMtaXlCmdLdx5AgVsITDHbp1MMi6hSAAAABYksRlSgJYwX1/K406oqWEJriz+0i3fOhw8kzVjJ6DVEAAAAAtiYBcbbr0O5PQPjhbniX2bKPqGNHuYJ14bdIyq3+LEGLhumbcMUP/wfsLTTprpjDF6wrhDZIlsCzwswFDrFJa</DTS:Password>
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3WmO+g0uIk2MWvjQ52Bi3gAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAB2lvEK/ybkga0kP3U2sXS7t0SmMglg3RPCcFbRNBxAJwAAAAAOgAAAAAIAACAAAABvONzLylVf0K6Fe7VSp5jNgIJ22Q1hobsabHNkx3y77iAAAAA5fdg0C9b9o7jNcW89CCRiLos2ajEhOjHwwLPQSyXy5UAAAACrmPe9J1RzIwjkp8JTqSLxjck2iOvIKAc9lFhTTTCv9hj1man9GP/ZPEzMk3w7VSEnJLffgpcjfP+0SkNOx42V</DTS:Password>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
@@ -48,6 +48,138 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\dimCity data Flow\For update"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="For update"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input].Columns[MiddleInitial]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MiddleInitial"
+                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleInitial]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Address"
+                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input].Columns[MiddleInitial_DWH]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MiddleInitial_DWH"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[MiddleInitial_DWH]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input].Columns[FirstName_DWH]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName_DWH"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[FirstName_DWH]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input].Columns[LastName_DWH]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName_DWH"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[LastName_DWH]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input].Columns[Address_DWH]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Address_DWH"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[Address_DWH]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dimCity data Flow\For update.Outputs[Update]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Update"
+                  synchronousInputId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]} != #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[LastName_DWH]} || #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[Address_DWH]} != #{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]} || #{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]} != #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[FirstName_DWH]} || #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[MiddleInitial_DWH]} != #{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleInitial]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">LastName != LastName_DWH || Address_DWH != Address || FirstName != FirstName_DWH || MiddleInitial_DWH != MiddleInitial</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dimCity data Flow\For update.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\dimCity data Flow\For update.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dimCity data Flow\For update.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dimCity data Flow\For update.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dimCity data Flow\For update.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dimCity data Flow\For update.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\dimCity data Flow\Insert rows"
               componentClassID="Microsoft.OLEDBDestination"
@@ -135,42 +267,38 @@
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerID]" />
                     <inputColumn
                       refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[FirstName]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="FirstName"
                       externalMetadataColumnId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]" />
                     <inputColumn
                       refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[MiddleInitial]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="1"
                       cachedName="MiddleInitial"
                       externalMetadataColumnId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[MiddleInitial]"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleInitial]" />
                     <inputColumn
                       refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[LastName]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="LastName"
                       externalMetadataColumnId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]" />
                     <inputColumn
                       refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[Address]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Address"
                       externalMetadataColumnId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]" />
                     <inputColumn
-                      refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[CityID]"
+                      refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].Columns[CitySID_DWH_City]"
                       cachedDataType="i4"
-                      cachedName="CityID"
+                      cachedName="CitySID_DWH_City"
                       externalMetadataColumnId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[CitySID]"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]" />
+                      lineageId="Package\dimCity data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -184,26 +312,22 @@
                       name="CustomerID" />
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="FirstName" />
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[MiddleInitial]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="1"
                       name="MiddleInitial" />
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="LastName" />
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\Insert rows.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Address" />
                     <externalMetadataColumn
@@ -252,76 +376,10 @@
                   name="Conditional Split Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[CustomerSID]"
+                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[CustomerSID_DWH]"
                       cachedDataType="i4"
-                      cachedName="CustomerSID"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[FirstName]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="FirstName"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[MiddleInitial]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="MiddleInitial"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleInitial]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[LastName]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="LastName"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[CityID]"
-                      cachedDataType="i4"
-                      cachedName="CityID"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[Address]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Address"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[MiddleInitial1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="MiddleInitial"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[MiddleInitial]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[FirstName1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="FirstName"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[FirstName]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[LastName1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="LastName"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[LastName]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[Address1]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="Address"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[Address]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Is new row.Inputs[Conditional Split Input].Columns[CitySID]"
-                      cachedDataType="i4"
-                      cachedName="CitySID"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CitySID]" />
+                      cachedName="CustomerSID_DWH"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID_DWH]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -341,13 +399,13 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">[ISNULL](#{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID]})</property>
+                      name="Expression">[ISNULL](#{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID_DWH]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">ISNULL(CustomerSID)</property>
+                      name="FriendlyExpression">ISNULL(CustomerSID_DWH)</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -369,13 +427,13 @@
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">![ISNULL](#{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID]}) &amp;&amp; (#{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]} != #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[FirstName]} || #{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]} != #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[LastName]} || #{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleInitial]} != #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[MiddleInitial]} || #{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]} != #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CitySID]} || #{Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]} != #{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[Address]})</property>
+                      name="Expression">![ISNULL](#{Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID_DWH]})</property>
                     <property
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the friendly version of the expression. This expression version uses column names."
                       expressionType="Notify"
-                      name="FriendlyExpression">!ISNULL(CustomerSID) &amp;&amp; ([OLE DB Source].FirstName != [Lkp dimCustomers].FirstName || [OLE DB Source].LastName != [Lkp dimCustomers].LastName || [OLE DB Source].MiddleInitial != [Lkp dimCustomers].MiddleInitial || [OLE DB Source].CityID != [Lkp dimCustomers].CitySID || [OLE DB Source].Address != [Lkp dimCustomers].Address)</property>
+                      name="FriendlyExpression">!ISNULL(CustomerSID_DWH)</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
@@ -435,21 +493,23 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [CityID]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [CitySID]
+      ,[CityID]
       ,[CityName]
-      ,[Zipcode]
-      ,[CountryID]
-  FROM [salesDWH2020_Tim3].[staging].[Cities]</property>
+      ,[ZipCode]
+      ,[CountrySID]
+  FROM [salesDWH2020_Tim3].[dbo].[dimCity]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT [CityID]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  [CitySID]
+      ,[CityID]
       ,[CityName]
-      ,[Zipcode]
-      ,[CountryID]
-  FROM [salesDWH2020_Tim3].[staging].[Cities]) [refTable]
+      ,[ZipCode]
+      ,[CountrySID]
+  FROM [salesDWH2020_Tim3].[dbo].[dimCity]) [refTable]
 where [refTable].[CityID] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -481,7 +541,7 @@ where [refTable].[CityID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CityID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Zipcode" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CountryID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CitySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CityName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ZipCode" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CountrySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -539,17 +599,17 @@ where [refTable].[CityID] = ?</property>
                   synchronousInputId="Package\dimCity data Flow\Lkp dimCity.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dimCity data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityID]"
+                      refId="Package\dimCity data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\dimCity data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CityID]"
-                      name="CityID"
+                      lineageId="Package\dimCity data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]"
+                      name="CitySID_DWH_City"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table from which a column is copied."
-                          name="CopyFromReferenceColumn">CityID</property>
+                          name="CopyFromReferenceColumn">CitySID</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -653,7 +713,7 @@ where [refTable].[CustomerID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerSID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MiddleInitial" dataType="DT_STR" length="1" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="LastName" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CitySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Address" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerSID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MiddleInitial" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CitySID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Address" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -711,11 +771,11 @@ where [refTable].[CustomerID] = ?</property>
                   synchronousInputId="Package\dimCity data Flow\Lkp dimCustomers.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID]"
+                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID_DWH]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID]"
-                      name="CustomerSID"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID_DWH]"
+                      name="CustomerSID_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -725,13 +785,12 @@ where [refTable].[CustomerID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[MiddleInitial]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[MiddleInitial_DWH]"
+                      dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="1"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[MiddleInitial]"
-                      name="MiddleInitial"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[MiddleInitial_DWH]"
+                      name="MiddleInitial_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -741,13 +800,12 @@ where [refTable].[CustomerID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[FirstName]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[FirstName_DWH]"
+                      dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="50"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[FirstName]"
-                      name="FirstName"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[FirstName_DWH]"
+                      name="FirstName_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -757,13 +815,12 @@ where [refTable].[CustomerID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[LastName]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[LastName_DWH]"
+                      dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="50"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[LastName]"
-                      name="LastName"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[LastName_DWH]"
+                      name="LastName_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -773,13 +830,12 @@ where [refTable].[CustomerID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[Address]"
-                      codePage="1252"
-                      dataType="str"
+                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[Address_DWH]"
+                      dataType="wstr"
                       errorOrTruncationOperation="Copy Column"
                       length="50"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[Address]"
-                      name="Address"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[Address_DWH]"
+                      name="Address_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -789,11 +845,11 @@ where [refTable].[CustomerID] = ?</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CitySID]"
+                      refId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CitySID_DWH]"
                       dataType="i4"
                       errorOrTruncationOperation="Copy Column"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CitySID]"
-                      name="CitySID"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CitySID_DWH]"
+                      name="CitySID_DWH"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -862,12 +918,12 @@ where [refTable].[CustomerID] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [CustomerID]
-      ,[FirstName]
-      ,[MiddleInitial]
-      ,[LastName]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [CustomerID]      
+      , CAST( [FirstName]as NVARCHAR(50)) as  FirstName
+      , CAST( [MiddleInitial]as NVARCHAR(1)) as  MiddleInitial
+      , CAST([LastName] as NVARCHAR(50)) as LastName
       ,[CityID]
-      ,[Address]
+      , CAST([Address] as NVARCHAR(50)) as Address
   FROM [salesDWH2020_Tim3].[staging].[Customers]</property>
                 <property
                   dataType="System.String"
@@ -915,8 +971,7 @@ where [refTable].[CustomerID] = ?</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
@@ -926,8 +981,7 @@ where [refTable].[CustomerID] = ?</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleInitial]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MiddleInitial]"
@@ -937,8 +991,7 @@ where [refTable].[CustomerID] = ?</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
@@ -957,8 +1010,7 @@ where [refTable].[CustomerID] = ?</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
@@ -975,20 +1027,17 @@ where [refTable].[CustomerID] = ?</property>
                       name="CustomerID" />
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="FirstName" />
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[MiddleInitial]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="1"
                       name="MiddleInitial" />
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="LastName" />
                     <externalMetadataColumn
@@ -997,8 +1046,7 @@ where [refTable].[CustomerID] = ?</property>
                       name="CityID" />
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Address" />
                   </externalMetadataColumns>
@@ -1015,22 +1063,19 @@ where [refTable].[CustomerID] = ?</property>
                       name="CustomerID" />
                     <outputColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FirstName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FirstName]"
                       name="FirstName" />
                     <outputColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MiddleInitial]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="1"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[MiddleInitial]"
                       name="MiddleInitial" />
                     <outputColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LastName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LastName]"
                       name="LastName" />
@@ -1041,8 +1086,7 @@ where [refTable].[CustomerID] = ?</property>
                       name="CityID" />
                     <outputColumn
                       refId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
                       name="Address" />
@@ -1082,7 +1126,8 @@ where [refTable].[CustomerID] = ?</property>
                   expressionType="Notify"
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">  update [salesDWH2020_Tim3].[dbo].[dimCustomer]
-  set	[CustomerID]= ?
+  set	
+       [CustomerID]= ?
       ,[FirstName]= ?
       ,[MiddleInitial]= ?
       ,[LastName]= ?
@@ -1111,55 +1156,51 @@ where [CustomerSID] = ?</property>
                   name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[FirstName]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="FirstName"
-                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[MiddleInitial]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1"
-                      cachedName="MiddleInitial"
-                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleInitial]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[LastName]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="LastName"
-                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]" />
-                    <inputColumn
-                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CityID]"
-                      cachedDataType="i4"
-                      cachedName="CityID"
-                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
-                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CityID]" />
-                    <inputColumn
                       refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CustomerID]"
                       cachedDataType="i4"
                       cachedName="CustomerID"
                       externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerID]" />
                     <inputColumn
+                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CustomerSID_DWH]"
+                      cachedDataType="i4"
+                      cachedName="CustomerSID_DWH"
+                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID_DWH]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[MiddleInitial]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MiddleInitial"
+                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[MiddleInitial]" />
+                    <inputColumn
+                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[LastName]" />
+                    <inputColumn
                       refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[Address]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
+                      cachedDataType="wstr"
                       cachedLength="50"
                       cachedName="Address"
-                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
                       lineageId="Package\dimCity data Flow\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]" />
                     <inputColumn
-                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CustomerSID]"
+                      refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].Columns[CitySID_DWH_City]"
                       cachedDataType="i4"
-                      cachedName="CustomerSID"
-                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
-                      lineageId="Package\dimCity data Flow\Lkp dimCustomers.Outputs[Lookup Match Output].Columns[CustomerSID]" />
+                      cachedName="CitySID_DWH_City"
+                      externalMetadataColumnId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\dimCity data Flow\Lkp dimCity.Outputs[Lookup Match Output].Columns[CitySID_DWH_City]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1176,8 +1217,7 @@ where [CustomerSID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Param_1">
                       <properties>
@@ -1189,8 +1229,7 @@ where [CustomerSID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="1"
                       name="Param_2">
                       <properties>
@@ -1202,8 +1241,7 @@ where [CustomerSID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Param_3">
                       <properties>
@@ -1226,8 +1264,7 @@ where [CustomerSID] = ?</property>
                     </externalMetadataColumn>
                     <externalMetadataColumn
                       refId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="Param_5">
                       <properties>
@@ -1286,6 +1323,11 @@ where [CustomerSID] = ?</property>
           </components>
           <paths>
             <path
+              refId="Package\dimCity data Flow.Paths[Conditional Split Default Output]"
+              endId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input]"
+              name="Conditional Split Default Output"
+              startId="Package\dimCity data Flow\For update.Outputs[Conditional Split Default Output]" />
+            <path
               refId="Package\dimCity data Flow.Paths[Lookup Match Output]"
               endId="Package\dimCity data Flow\Lkp dimCustomers.Inputs[Lookup Input]"
               name="Lookup Match Output"
@@ -1302,7 +1344,7 @@ where [CustomerSID] = ?</property>
               startId="Package\dimCity data Flow\Is new row.Outputs[New row]" />
             <path
               refId="Package\dimCity data Flow.Paths[Old Row]"
-              endId="Package\dimCity data Flow\Update rows.Inputs[OLE DB Command Input]"
+              endId="Package\dimCity data Flow\For update.Inputs[Conditional Split Input]"
               name="Old Row"
               startId="Package\dimCity data Flow\Is new row.Outputs[Old Row]" />
             <path
@@ -1340,16 +1382,52 @@ where [CustomerSID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="150,42"
-          Id="Package\dimCity data Flow\OLE DB Source"
-          TopLeft="205,68" />
+          Size="131,42"
+          Id="Package\dimCity data Flow\Is new row"
+          TopLeft="217,412" />
+        <NodeLayout
+          Size="166,44"
+          Id="Package\dimCity data Flow\Lkp dimCustomers"
+          TopLeft="194,304" />
         <NodeLayout
           Size="134,42"
           Id="Package\dimCity data Flow\Lkp dimCity"
-          TopLeft="209,185" />
+          TopLeft="215,187" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\dimCity data Flow\Update rows"
+          TopLeft="35,588" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\dimCity data Flow\Insert rows"
+          TopLeft="359,529" />
         <EdgeLayout
-          Id="Package\dimCity data Flow.Paths[OLE DB Source Output]"
-          TopLeft="278,110">
+          Id="Package\dimCity data Flow.Paths[Lookup Match Output1]"
+          TopLeft="279.75,348">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64"
+              Start="0,0"
+              End="0,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,22.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dimCity data Flow.Paths[Lookup Match Output]"
+          TopLeft="279.5,229">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1366,154 +1444,8 @@ where [CustomerSID] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="166,44"
-          Id="Package\dimCity data Flow\Lkp dimCustomers"
-          TopLeft="194,304" />
-        <EdgeLayout
-          Id="Package\dimCity data Flow.Paths[Lookup Match Output]"
-          TopLeft="276.5,227">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,77"
-              Start="0,0"
-              End="0,69.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,69.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,28.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="131,42"
-          Id="Package\dimCity data Flow\Is new row"
-          TopLeft="195,412" />
-        <EdgeLayout
-          Id="Package\dimCity data Flow.Paths[Lookup Match Output1]"
-          TopLeft="277,348">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-16.5,64"
-              Start="0,0"
-              End="-16.5,56.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28"
-                    Point2="0,32"
-                    Point3="-4,32" />
-                  <mssgle:LineSegment
-                    End="-12.5,32" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-12.5,32"
-                    Point2="-16.5,32"
-                    Point3="-16.5,36" />
-                  <mssgle:LineSegment
-                    End="-16.5,56.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-56.44138671875,37,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\dimCity data Flow\Update rows"
-          TopLeft="370,519" />
-        <NodeLayout
-          Size="132,42"
-          Id="Package\dimCity data Flow\Insert rows"
-          TopLeft="25,511" />
-        <EdgeLayout
-          Id="Package\dimCity data Flow.Paths[Old Row]"
-          TopLeft="281,454">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="158,65"
-              Start="0,0"
-              End="158,57.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.4705882352941" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22.4705882352941"
-                    Point2="0,26.4705882352941"
-                    Point3="4,26.4705882352941" />
-                  <mssgle:LineSegment
-                    End="154,26.4705882352941" />
-                  <mssgle:CubicBezierSegment
-                    Point1="154,26.4705882352941"
-                    Point2="158,26.4705882352941"
-                    Point3="158,30.4705882352941" />
-                  <mssgle:LineSegment
-                    End="158,57.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="59.6884375,31.4705882352941,38.623125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\dimCity data Flow.Paths[New row]"
-          TopLeft="240,454">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-149,57"
-              Start="0,0"
-              End="-149,49.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.2126696832579" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.2126696832579"
-                    Point2="0,23.2126696832579"
-                    Point3="-4,23.2126696832579" />
-                  <mssgle:LineSegment
-                    End="-145,23.2126696832579" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-145,23.2126696832579"
-                    Point2="-149,23.2126696832579"
-                    Point3="-149,27.2126696832579" />
-                  <mssgle:LineSegment
-                    End="-149,49.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-103.3926953125,28.2126696832579,57.785390625,16"
+              BoundingBox="-48.19138671875,27.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1531,12 +1463,165 @@ where [CustomerSID] = ?</property>
           Size="195,40"
           Id="f21b4c6c-e625-4281-a1be-ec39ceb38785"
           TopLeft="389,69" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\dimCity data Flow\OLE DB Source"
+          TopLeft="209,72" />
+        <EdgeLayout
+          Id="Package\dimCity data Flow.Paths[OLE DB Source Output]"
+          TopLeft="283,114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\dimCity data Flow\For update"
+          TopLeft="62,504" />
+        <EdgeLayout
+          Id="Package\dimCity data Flow.Paths[New row]"
+          TopLeft="303,454">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="122,75"
+              Start="0,0"
+              End="122,67.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5429864253394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5429864253394"
+                    Point2="0,30.5429864253394"
+                    Point3="4,30.5429864253394" />
+                  <mssgle:LineSegment
+                    End="118,30.5429864253394" />
+                  <mssgle:CubicBezierSegment
+                    Point1="118,30.5429864253394"
+                    Point2="122,30.5429864253394"
+                    Point3="122,34.5429864253394" />
+                  <mssgle:LineSegment
+                    End="122,67.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="40.97595703125,35.5429864253394,40.0480859375,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dimCity data Flow.Paths[Old Row]"
+          TopLeft="262,454">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-135,50"
+              Start="0,0"
+              End="-135,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3619909502262" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3619909502262"
+                    Point2="0,20.3619909502262"
+                    Point3="-4,20.3619909502262" />
+                  <mssgle:LineSegment
+                    End="-131,20.3619909502262" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-131,20.3619909502262"
+                    Point2="-135,20.3619909502262"
+                    Point3="-135,24.3619909502262" />
+                  <mssgle:LineSegment
+                    End="-135,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-86.8115625,25.3619909502262,38.623125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\dimCity data Flow.Paths[Conditional Split Default Output]"
+          TopLeft="127,546">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23,42"
+              Start="0,0"
+              End="-23,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="-4,21" />
+                  <mssgle:LineSegment
+                    End="-19,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19,21"
+                    Point2="-23,21"
+                    Point3="-23,25" />
+                  <mssgle:LineSegment
+                    End="-23,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-19.5,26,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\dimCity data Flow\OLE DB Source">
+    design-time-name="Package\dimCity data Flow\Lkp dimCustomers">
     <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1566,30 +1651,15 @@ where [CustomerSID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dimCity data Flow\Lkp dimCustomers">
+    design-time-name="Package\dimCity data Flow\Insert rows">
     <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\dimCity data Flow\Insert rows">
+    design-time-name="Package\dimCity data Flow\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
